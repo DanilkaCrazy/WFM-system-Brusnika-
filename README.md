@@ -63,7 +63,8 @@ https://disk.yandex.ru/d/kkWFqx0QlS4eNg
 
 Конкурентный анализ — это сравнительный анализ бизнес-процессов, продуктов и стратегии конкурентов по ряду параметров:
 
-![Screenshot_8](https://github.com/DanilkaCrazy/WFM-system-Brusnika-/assets/95550202/47da91aa-ff10-45ff-85dc-67cfe1ab1b52)
+![Screenshot_1](https://github.com/DanilkaCrazy/WFM-system-Brusnika-/assets/95550202/e5456333-d7a9-4c25-82eb-a9f742d0d311)
+
 
 https://disk.yandex.ru/d/aG1Kk0pc4HJW1w
 
