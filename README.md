@@ -80,6 +80,9 @@ https://disk.yandex.ru/d/aG1Kk0pc4HJW1w
 2) Эйчары и менеджеры компании "Брусника";
 3) Сотрудники компании.
 
+## Описание ролей:
+
+![Роли](https://github.com/DanilkaCrazy/WFM-system-Brusnika-/assets/95550202/7caeb4f8-06b4-4265-bc9b-0d8e6f071439)
 
 
 
