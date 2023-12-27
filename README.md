@@ -85,5 +85,8 @@ https://disk.yandex.ru/d/aG1Kk0pc4HJW1w
 ![Роли](https://github.com/DanilkaCrazy/WFM-system-Brusnika-/assets/95550202/7caeb4f8-06b4-4265-bc9b-0d8e6f071439)
 
 
+## Диаграмма прецедентов:
+
+![Screenshot_1](https://github.com/DanilkaCrazy/WFM-system-Brusnika-/assets/95550202/30280a55-532a-4fd0-8f3d-e55a14753542)
 
 
