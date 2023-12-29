@@ -1,5 +1,6 @@
 import NavBurger from './nav-burger';
 import NavLinks from './nav-links';
+import LogoSVG from './svg/logo-svg';
 
 export type OpenedNavProps = {
   onBurgerClick: () => void;
@@ -11,9 +12,7 @@ export default function OpenedNav({ onBurgerClick: handleBurgerClick }: OpenedNa
       <aside className="sidebar--opened">
         <div className="sidebar__header">
           <div className="sidebar__logo">
-            <svg width="221" height="16" viewBox="0 0 221 16" fill="none">
-              <use xlinkHref="#logo"></use>
-            </svg>
+            <LogoSVG />
           </div>
           <NavBurger onBurgerClick={handleBurgerClick} />
         </div>
