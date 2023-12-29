@@ -67,7 +67,7 @@ min_workers1_amount, min_workers2_amount, workers1_profession, workers2_professi
     model+= workers1_pay * x + workers2_pay * y
     #work_volume = work_volume * productivity чтобы получить настоящие объемы надо знать производительность, а мы её не знаем
     volume_to_duration = work_volume/work_duration
-    model+= x+y>=work_volume
+    model+= x+y>=volume_to_duration
     model+=x>=min_workers1_amount
     model+=y>=min_workers2_amount
     model.solve()
