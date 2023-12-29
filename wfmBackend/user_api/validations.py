@@ -4,9 +4,10 @@ UserModel = get_user_model()
 
 def custom_validation(data):
     username = data['username'].strip()
-    password = data['password'].strip()
     first_name = data['first_name'].strip()
     last_name = data['last_name'].strip()
+    role = data['role'].strip()
+    password = data['password'].strip()
     ##
     if not username or UserModel.objects.filter(username = username).exists():
         raise ValidationError('choose another username')
@@ -15,6 +16,8 @@ def custom_validation(data):
         raise ValidationError('a first name is needed')
     if not last_name:
         raise ValidationError('a last name is needed')
+    if not role:
+        raise ValidationError('a role is required')
     if not password or len(password) < 8:
         raise ValidationError('choose another password, min 8 characters')
     ##

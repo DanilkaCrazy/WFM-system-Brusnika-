@@ -54,12 +54,12 @@ export const NavLinksData: ReadonlyArray<NavLink> = [
 ];
 
 export const APIRoute = {
-  User: 'user',
+  User: 'api/user',
   Staff: 'staff',
   Calculator: 'calculator',
-  Signup: 'signup',
-  Login: 'login',
-  Logout: 'logout',
+  Signup: 'api/register',
+  Login: 'api/login',
+  Logout: 'api/logout',
 } as const;
 
 export const NameSpace = {

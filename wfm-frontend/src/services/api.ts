@@ -6,7 +6,7 @@ import { AuthStatus, NameSpace } from '../consts';
 import { logoutAction } from '../store/api-actions';
 import { StatusCodes } from 'http-status-codes';
 
-const BACKEND_URL = 'http://127.0.0.1:5173';
+const BACKEND_URL = 'http://127.0.0.1:8000';
 const REQUEST_TIMEOUT = 5000;
 
 
