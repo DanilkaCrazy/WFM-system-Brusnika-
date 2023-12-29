@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import LPProblemSerializer, LPProblemCreateSerializer
-from .utils import getLPProblems, getOneLPProblem, solveLPProblem
-from .models import LPProblem
+from .serializers import LPProblemSerializer, LPProblemSolutionSerializer
+from .utils import getLPProblems, getOneLPProblem, solveLPProblem, getOneLPProblemSolution, getLPPSolutions
+from .models import LPProblem, LPProblemSolution
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import permissions, status
 
@@ -21,11 +21,21 @@ def getProblems(request):
         serializer = LPProblemSerializer(lp_problem, many=False)
         result = solveLPProblem(data['workers1_pay'], data['workers2_pay'], data['work_volume'], data['work_duration'], 
         data['workers1_amount'], data['workers2_amount'])
-        return Response(result)
+        lp_sol = LPProblemSolution.objects.create(workers_pay=result)
+        serializer_sol = LPProblemSolutionSerializer(lp_sol, many=False)
+        return Response(serializer.data)
 
 @api_view(['GET'])
 def getLPProblem(request, pk):
     if request.method == 'GET':
         return getOneLPProblem(request, pk)
 
+@api_view(['GET'])
+def getLPProblemSolution(request,pk):
+    if request.method=='GET':
+        return getOneLPProblemSolution(request, pk)
 
+@api_view(['GET'])
+def getLPProblemSolutions(request):
+    if request.method=='GET':
+        return getLPPSolutions(request)

@@ -13,3 +13,8 @@ class LPProblem(models.Model):
     
     def __str__(self):
         return self.work_volume
+
+class LPProblemSolution(models.Model):
+    workers_pay = models.IntegerField() #минимальные затраты
+    #workers_amount = models.IntegerField() #фин. кол-во работников
+    #load = models.BooleanField() #Загруженность

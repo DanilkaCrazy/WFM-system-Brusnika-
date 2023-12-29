@@ -7,5 +7,6 @@ urlpatterns = [
     #path('problem', views.LPProblemView.as_view(), name='viewProblem')
     path('', views.getProblems, name='calculator'),
     path('all/<str:pk>/',views.getLPProblem, name='problem'),
-    path('all', views.getLPProblems, name='allProblems'),
+    path('s/<str:pk>/', views.getLPProblemSolution, name='solution'),
+    path('s', views.getLPProblemSolutions, name='solutions')
 ]

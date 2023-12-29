@@ -1,5 +1,5 @@
-from .models import LPProblem
-from .serializers import LPProblemSerializer
+from .models import LPProblem, LPProblemSolution
+from .serializers import LPProblemSerializer, LPProblemSolutionSerializer
 from rest_framework.response import Response
 from pulp import *
 
@@ -23,6 +23,15 @@ def createProblem(request):
     serializer = LPProblemSerializer(lp_problem, many=False)
     return Response(serializer.data)
 
+def getOneLPProblemSolution(request, pk):
+    LPSol= LPProblemSolution.objects.get(id=pk)
+    serializer = LPProblemSolutionSerializer(LPSol, many=False)
+    return Response(serializer.data)
+
+def getLPPSolutions (request):
+    lpSolutions = LPProblemSolution.objects.all()
+    serializer = LPProblemSolutionSerializer(lpSolutions, many = True)
+    return Response(serializer.data)
 
 def solveLPProblem(workers1_pay, workers2_pay, work_volume, work_duration, workers1_amount, workers2_amount):
     model = LpProblem("WFMProblem", LpMinimize)
