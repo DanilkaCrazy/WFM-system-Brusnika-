@@ -4,14 +4,16 @@ import { postCalculatorInputsAction } from '../api-actions';
 import { CalculatorResult } from '../../types/calculator-result';
 
 export type CalculatorProcessState = {
-  workersCount?: number;
-  expenses?: number;
+  workers1_final?: number;
+  workers2_final?: number;
+  workers_pay?: number;
   calculating: boolean;
 };
 
 const initialState: CalculatorProcessState = {
-  workersCount: undefined,
-  expenses: undefined,
+  workers1_final: undefined,
+  workers2_final: undefined,
+  workers_pay: undefined,
   calculating: false,
 };
 
@@ -22,15 +24,17 @@ export const calculatorProcess = createSlice({
   extraReducers(builder) {
     builder
       .addCase(postCalculatorInputsAction.pending, (state) => {
-        state.workersCount = undefined;
-        state.expenses = undefined;
+        state.workers1_final = undefined;
+        state.workers2_final = undefined;
+        state.workers_pay = undefined;
         state.calculating = true;
       })
       .addCase(postCalculatorInputsAction.fulfilled, (state, action: PayloadAction<CalculatorResult>) => {
-        state.workersCount = action.payload.workers1_final;
-        state.expenses = action.payload.expenses;
-        state.calculating = false;
-      });
+        state.workers1_final = action.payload.workers1_final;
+        state.workers2_final = action.payload.workers2_final;
+      state.workers_pay = action.payload.workers_pay;
+        state.calculating = false; 
+  });
     // .addCase(postCalculatorInputsAction.rejected, (state) => {
     //   state.calculating = false;
     // });

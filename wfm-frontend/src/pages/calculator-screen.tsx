@@ -114,15 +114,21 @@ export default function CalculatorScreen(): JSX.Element {
 
           <div className="calculator__result-wrapper">
             <div className="calculator__result">
-              <h3 className="calculator__result-title title-reset">Количество работников</h3>
+              <h3 className="calculator__result-title title-reset">Количество работников 1</h3>
               <div className="calculator__result-text">
                 {calculating ? 'Подсчёт...' : result.workers1_final}
               </div>
             </div>
             <div className="calculator__result">
+              <h3 className="calculator__result-title title-reset">Количество работников 2</h3>
+              <div className="calculator__result-text">
+                {calculating ? 'Подсчёт...' : result.workers2_final}
+              </div>
+            </div>
+            <div className="calculator__result">
               <h3 className="calculator__result-title title-reset">Затраты</h3>
               <div className="calculator__result-text">
-                {calculating ? 'Подсчёт...' : result.expenses}
+                {calculating ? 'Подсчёт...' : result.workers_pay}
               </div>
             </div>
           </div>
