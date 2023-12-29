@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { NameSpace } from '../../consts';
 
-type ErrorProcessState = {
+export type ErrorProcessState = {
   errorCode: number | undefined;
 }
 
@@ -19,4 +19,4 @@ export const errorProcess = createSlice({
   },
 });
 
-export const {setErrorCode} = errorProcess.actions;
+export const { setErrorCode } = errorProcess.actions;

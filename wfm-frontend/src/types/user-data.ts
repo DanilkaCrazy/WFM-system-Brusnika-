@@ -1,6 +1,10 @@
+import { Role } from './role';
+
 export type UserData = {
+  id: string;
   firstName: string;
   lastName: string;
-  avatarUrl: string;
-  token: string;
+  patronymic: string;
+  role: Role;
+  avatarUrl?: string;
 };
