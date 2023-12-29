@@ -15,6 +15,8 @@ class LPProblem(models.Model):
         return self.work_volume
 
 class LPProblemSolution(models.Model):
+    problem = models.ForeignKey(LPProblem, models.SET_NULL,blank=True, null=True)
     workers_pay = models.IntegerField() #минимальные затраты
-    #workers_amount = models.IntegerField() #фин. кол-во работников
+    #workers_by_days = models.IntegerField() #фин. кол-во работников
+    workers_by_daysList = models.CharField(max_length=1000) #фин. кол-во работников по дням
     #load = models.BooleanField() #Загруженность

@@ -21,7 +21,8 @@ def getProblems(request):
         serializer = LPProblemSerializer(lp_problem, many=False)
         result = solveLPProblem(data['workers1_pay'], data['workers2_pay'], data['work_volume'], data['work_duration'], 
         data['workers1_amount'], data['workers2_amount'])
-        lp_sol = LPProblemSolution.objects.create(workers_pay=result)
+        #lp_sol = LPProblemSolution.objects.create(workers_pay, workers_by_days = result)
+        lp_sol = LPProblemSolution.objects.create(problem = lp_problem, workers_pay=result[0], workers_by_daysList = result[1])
         serializer_sol = LPProblemSolutionSerializer(lp_sol, many=False)
         return Response(serializer.data)
 

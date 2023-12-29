@@ -50,5 +50,10 @@ def solveLPProblem(workers1_pay, workers2_pay, work_volume, work_duration, worke
         model+=x[i]>=1
         model+=y[i]>=1
     model.solve()
-    payment = value(model.objective)
-    return payment
+    workers_pay = value(model.objective)
+    #workers_by_days = []
+    workers_by_daysList = ''
+    for v in model.variables():
+        #workers_by_days.append(f"{v.name}={v.varValue}")
+        workers_by_daysList+=f"{v.name}={v.varValue} "
+    return workers_pay, workers_by_daysList
