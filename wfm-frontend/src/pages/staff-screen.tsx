@@ -45,7 +45,7 @@ export default function StaffScreen(): JSX.Element {
               </div>
               <div className="staff__member-info">
                 <span className="staff__member-fio">
-                  {`${staffMember.firstName} ${staffMember.lastName} ${staffMember.patronymic}`}
+                  {`${staffMember.first_name} ${staffMember.last_name} ${staffMember.patronymic}`}
                 </span>
                 <span className="staff__member-role">
                   {Roles[staffMember.role]}

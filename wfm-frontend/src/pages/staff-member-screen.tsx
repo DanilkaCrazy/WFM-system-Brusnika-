@@ -80,8 +80,8 @@ export default function StaffMemberScreen(): JSX.Element {
                 </div>
               </div>
               <div className="user__data">
-                <div className="user__fio">{staffMemberData.firstName}</div>
-                <div className="user__fio">{staffMemberData.lastName}</div>
+                <div className="user__fio">{staffMemberData.first_name}</div>
+                <div className="user__fio">{staffMemberData.last_name}</div>
                 <div className="user__fio">{staffMemberData.patronymic}</div>
               </div>
             </div>
@@ -98,8 +98,8 @@ export default function StaffMemberScreen(): JSX.Element {
                 <div className="user__role">{Roles[staffMemberData.role]}</div>
               </div>
               <div className="user__data">
-                <div className="user__fio">{staffMemberData.firstName}</div>
-                <div className="user__fio">{staffMemberData.lastName}</div>
+                <div className="user__fio">{staffMemberData.first_name}</div>
+                <div className="user__fio">{staffMemberData.last_name}</div>
                 <div className="user__fio">{staffMemberData.patronymic}</div>
               </div>
             </div>

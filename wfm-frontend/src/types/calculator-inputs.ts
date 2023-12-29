@@ -1,7 +1,7 @@
 import { WorkerInput } from './worker-input';
 
 export type CalculatorInputs = {
-  workload: number;
-  workPeriod: number;
+  work_volume: number;
+  work_duration: number;
   workerInputs: WorkerInput[];
 };

@@ -13,12 +13,12 @@ import FormSelect from '../components/form-select';
 export default function SignUpScreen(): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const [firstName, setFirstName, firstNameError, processFirstNameValidation] = useValidationInput(
+  const [first_name, setFirstName, firstNameError, processFirstNameValidation] = useValidationInput(
     checkNameValidity,
     'Имя должно состоять только из русских букв'
   );
 
-  const [lastName, setLastName, lastNameError, processLastNameValidation] = useValidationInput(
+  const [last_name, setLastName, lastNameError, processLastNameValidation] = useValidationInput(
     checkNameValidity,
     'Фамилия должна состоять только из русских букв'
   );
@@ -28,7 +28,7 @@ export default function SignUpScreen(): JSX.Element {
     'Отчество должнл состоять только из русских букв'
   );
 
-  const [login, setLogin, loginError, processLoginValidation] = useValidationInput(
+  const [username, setLogin, loginError, processLoginValidation] = useValidationInput(
     checkLoginValidity,
     'Логин должен быть длинее 3 символов'
   );
@@ -45,11 +45,11 @@ export default function SignUpScreen(): JSX.Element {
     if (processFirstNameValidation() && processLastNameValidation() && processPatronymicValidation()
       && role && processLoginValidation() && processPasswordValidation()) {
       dispatch(signupAction({
-        firstName: firstName,
-        lastName: lastName,
+        first_name: first_name,
+        last_name: last_name,
         patronymic: patronymic,
         role: RolesRU[role],
-        login: login,
+        username: username,
         password: password,
       }));
     }
@@ -60,11 +60,11 @@ export default function SignUpScreen(): JSX.Element {
       <article className="signup">
         <h1 className="signup__title title-reset">Регистрация</h1>
         <form onSubmit={handleSubmit} className="signup__form" action="#">
-          <FormInput value={firstName} setValue={setFirstName} placeholder='Имя' id='first-name' />
-          <FormInput value={lastName} setValue={setLastName} placeholder='Фамилия' id='last-name' />
+          <FormInput value={first_name} setValue={setFirstName} placeholder='Имя' id='first-name' />
+          <FormInput value={last_name} setValue={setLastName} placeholder='Фамилия' id='last-name' />
           <FormInput value={patronymic} setValue={setPatronymic} placeholder='Отчество' id='patronymic' />
           <FormSelect values={Object.keys(RolesRU)} selectedValue={role} setSelectedValue={setRole} placeholder='Роль' id='role' />
-          <FormInput value={login} setValue={setLogin} placeholder='Логин' id='login' />
+          <FormInput value={username} setValue={setLogin} placeholder='Логин' id='login' />
           <FormInput value={password} setValue={setPassword} placeholder='Пароль' id='password' />
 
           {(firstNameError || lastNameError || patronymicError || loginError || passwordError) &&

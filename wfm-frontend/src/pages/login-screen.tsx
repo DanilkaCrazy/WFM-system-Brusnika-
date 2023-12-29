@@ -11,16 +11,16 @@ export default function LoginScreen(): JSX.Element {
   const navigate = useNavigate();
   const dispath = useAppDispatch();
 
-  const [formData, setFormData] = useState({ login: '', password: '' });
+  const [formData, setFormData] = useState({ username: '', password: '' });
   const hanldeInputChange: ChangeEventHandler<HTMLInputElement> = (e) => setFormData((prev) => ({
-    [e.target.name]: e.target.value,
-    ...prev
+    ...prev,
+    [e.target.name]: e.target.value
   }));
 
   const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();
 
-    if (formData.login.length && formData.password.length) {
+    if (formData.username.length && formData.password.length) {
       dispath(loginAction(formData));
     }
   };
@@ -36,15 +36,15 @@ export default function LoginScreen(): JSX.Element {
         <h1 className="signup__title title-reset">Авторизация</h1>
         <form onSubmit={handleSubmit} className="signup__form" action="#">
           <div className="signup__input-group">
-            <label className="signup__label visually-hidden" htmlFor="login">Логин</label>
+            <label className="signup__label visually-hidden" htmlFor="username">Логин</label>
             <input
-              value={formData.login}
+              value={formData.username}
               onChange={hanldeInputChange}
               className="signup__input"
-              type="login"
+              type="username"
               placeholder="Логин"
-              name="login"
-              id="login"
+              name="username"
+              id="username"
             />
           </div>
           <div className="signup__input-group">

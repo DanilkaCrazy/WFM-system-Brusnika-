@@ -11,8 +11,8 @@ export type UserProcessState = Partial<UserData> & {
 const initialState: UserProcessState = {
   authStatus: 'Unknown',
   id: undefined,
-  firstName: undefined,
-  lastName: undefined,
+  first_name: undefined,
+  last_name: undefined,
   patronymic: undefined,
   role: undefined,
   avatarUrl: undefined,
@@ -24,16 +24,16 @@ export const userProcess = createSlice({
   reducers: {
     setUserData: (state, action: PayloadAction<UserData>) => {
       state.id = action.payload.id;
-      state.firstName = action.payload.firstName;
-      state.lastName = action.payload.lastName;
+      state.first_name = action.payload.first_name;
+      state.last_name = action.payload.last_name;
       state.patronymic = action.payload.patronymic;
       state.role = action.payload.role;
       state.avatarUrl = action.payload.avatarUrl;
     },
     clearUserData: (state) => {
       state.id = undefined;
-      state.firstName = undefined;
-      state.lastName = undefined;
+      state.first_name = undefined;
+      state.last_name = undefined;
       state.patronymic = undefined;
       state.role = undefined;
       state.avatarUrl = undefined;

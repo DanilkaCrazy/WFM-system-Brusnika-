@@ -97,8 +97,8 @@ export const signupAction = createAsyncThunk<void, RegistrationData, {
   extra: AxiosInstance;
 }>(
   'user/signup',
-  async ({ firstName, lastName, patronymic, role, login, password }, { dispatch, extra: api }) => {
-    await api.post<UserData>(APIRoute.Signup, { firstName, lastName, patronymic, role, login, password });
+  async ({ first_name, last_name, patronymic, role, username, password }, { dispatch, extra: api }) => {
+    await api.post<UserData>(APIRoute.Signup, { first_name, last_name, patronymic, role, username, password });
 
     dispatch(redirectToRoute(AppRoutes.Login.FullPath));
   },
@@ -110,8 +110,8 @@ export const loginAction = createAsyncThunk<ServerUserData, AuthData, {
   extra: AxiosInstance;
 }>(
   'user/login',
-  async ({ login, password }, { dispatch, extra: api }) => {
-    const { data } = await api.post<ServerUserData>(APIRoute.Login, { login, password });
+  async ({ username, password }, { dispatch, extra: api }) => {
+    const { data } = await api.post<ServerUserData>(APIRoute.Login, { username, password });
 
     saveToken(data.token);
     dispatch(setUserData(data));
@@ -120,6 +120,7 @@ export const loginAction = createAsyncThunk<ServerUserData, AuthData, {
     return data;
   },
 );
+
 
 export const logoutAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;

@@ -1,10 +1,10 @@
 import { Role } from './role';
 
 export type RegistrationData = {
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   patronymic: string;
   role: Role;
-  login: string;
+  username: string;
   password: string;
 };

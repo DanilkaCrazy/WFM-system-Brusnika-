@@ -38,8 +38,8 @@ export default function UserScreen(): JSX.Element { // лк сотрудника
             </div>
           </div>
           <div className="user__data">
-            <div className="user__fio">{userData.firstName ?? 'Имя'}</div>
-            <div className="user__fio">{userData.lastName ?? 'Фамилия'}</div>
+            <div className="user__fio">{userData.first_name ?? 'Имя'}</div>
+            <div className="user__fio">{userData.last_name ?? 'Фамилия'}</div>
             <div className="user__fio">{userData.patronymic ?? 'Отчество'}</div>
           </div>
         </div>

@@ -1,3 +1,3 @@
-export default function checkLoginValidity(login: string) {
-  return login.length > 3;
+export default function checkLoginValidity(username: string) {
+  return username.length > 3;
 }
