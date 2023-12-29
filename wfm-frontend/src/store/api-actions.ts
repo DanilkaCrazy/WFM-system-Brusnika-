@@ -67,15 +67,17 @@ export const deleteUserDataAction = createAsyncThunk<void, { id: string }, {
   },
 );
 
-export const postCalculatorInputsAction = createAsyncThunk<CalculatorResult, CalculatorInputs, {
+export const postCalculatorInputsAction = createAsyncThunk<void, CalculatorInputs, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'calculator/deleteUser',
-  async (inputs, { extra: api }) => {
-    const { data } = await api.post<CalculatorResult>(APIRoute.Calculator, inputs);
-    return data;
+  async ({work_volume, work_duration, workers1_profession, workers1_amount, min_workers1_amount, 
+    workers1_pay, workers2_profession, workers2_amount, min_workers2_amount, 
+    workers2_pay}, { extra: api }) => {
+    await api.post<CalculatorInputs>(APIRoute.Calculator, {workers1_pay, workers2_pay, work_volume, work_duration, workers1_amount, workers2_amount, 
+    min_workers1_amount, min_workers2_amount, workers1_profession, workers2_profession});
   },
 );
 

@@ -18,8 +18,16 @@ const workerInitialState = {
 export default function CalculatorScreen(): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const [workload, setWorkload] = useState<number>();
-  const [workPeriod, setWorkPeriod] = useState<number>();
+  const [work_volume, setWorkload] = useState<number>();
+  const [work_duration, setWorkPeriod] = useState<number>();
+  const [workers1_profession, setRole_1] = useState<string>();
+  const [workers1_amount, setCount_1] = useState<number>();
+  const [min_workers1_amount, setMinCount_1] = useState<number>();
+  const [workers1_pay, setSalary_1] = useState<number>();
+  const [workers2_profession, setRole_2] = useState<string>();
+  const [workers2_amount, setCount_2] = useState<number>();
+  const [min_workers2_amount, setMinCount_2] = useState<number>();
+  const [workers2_pay, setSalary_2] = useState<number>();
   const [workerInputs, setWorkerInputs] = useState<Partial<WorkerInput>[]>([{ ...workerInitialState }]);
 
   const calculating = useAppSelector(isCalculating);
@@ -45,19 +53,13 @@ export default function CalculatorScreen(): JSX.Element {
   const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();
 
-    if (!workload || !workPeriod) { // добавить доп. проверки
+    if (!work_volume || !work_duration || !workers1_profession || !workers1_amount || !min_workers1_amount ||!workers1_pay ||
+      !workers2_profession || !workers2_amount || !min_workers2_amount ||!workers2_pay) { // добавить доп. проверки
       return;
     }
-    for (const workerInput of workerInputs) {
-      if (!workerInput.role || !workerInput.count || !workerInput.minCount || !workerInput.salary) {
-        return;
-      }
-    }
-
     dispatch(postCalculatorInputsAction({
-      workload,
-      workPeriod,
-      workerInputs: workerInputs as WorkerInput[],
+      work_volume, work_duration, workers1_profession, workers1_amount, min_workers1_amount, workers1_pay, workers2_profession, 
+      workers2_amount, min_workers2_amount, workers2_pay,
     }));
   };
 
@@ -71,15 +73,15 @@ export default function CalculatorScreen(): JSX.Element {
         <div className="calculator__wrapper">
           <form onSubmit={handleSubmit} id="calculator-form" className="calculator__form" action="#">
             <div className="calculator__input-wrapper">
-              <label className="calculator__input-label" htmlFor="workload">Объём работы</label>
-              <input value={workload} onChange={(e) => setWorkload(Number(e.target.value))} min="0"
-                className="calculator__input" type="number" name="workload" id="workload"
+              <label className="calculator__input-label" htmlFor="work_volume">Объём работы</label>
+              <input value={work_volume} onChange={(e) => setWorkload(Number(e.target.value))} min="0"
+                className="calculator__input" type="number" name="work_volume" id="work_volume"
               />
             </div>
             <PlusSVG />
             <div className="calculator__input-wrapper">
               <label className="calculator__input-label" htmlFor="work-period">Период работы</label>
-              <input value={workPeriod} onChange={(e) => setWorkPeriod(Number(e.target.value))} min="0"
+              <input value={work_duration} onChange={(e) => setWorkPeriod(Number(e.target.value))} min="0"
                 className="calculator__input" type="number" name="work-period" id="work-period"
               />
             </div>
@@ -87,35 +89,45 @@ export default function CalculatorScreen(): JSX.Element {
             <div className="calculator__input-wrapper">
               <label className="calculator__input-label" htmlFor="workers">Работники</label>
               <div className="calculator__worker-inputs">
-                {workerInputs.map((workerInput, index) => (
-                  // workerInputs - условный стек, так что ничего критичного
-                  // eslint-disable-next-line react/no-array-index-key
-                  <div key={index} className="calculator__worker-input">
-                    <input value={workerInput.role} onChange={(e) => handleWorkerInputChange(e, index)}
+                  <div className="calculator__worker-input">
+                    <input value={workers1_profession} onChange={(e) => setRole_1(String(e.target.value))}
                       className="worker-input__role" type="text" name="role" placeholder="Должность" id="role"
                     />
-                    <input value={workerInput.count} onChange={(e) => handleWorkerInputChange(e, index)} min="0"
+                    <input value={workers1_amount} onChange={(e) => setCount_1(Number(e.target.value))} min="0"
                       className="worker-input__count" type="number" name="count" placeholder="Количество" id="count"
                     />
-                    <input value={workerInput.minCount} onChange={(e) => handleWorkerInputChange(e, index)} min="0"
+                    <input value={min_workers1_amount} onChange={(e) => setMinCount_1(Number(e.target.value))} min="0"
                       className="worker-input__min-count" type="number" name="minCount" placeholder="Минимальное количество" id="minCount"
                     />
-                    <input value={workerInput.salary} onChange={(e) => handleWorkerInputChange(e, index)} min="0"
+                    <input value={workers1_pay} onChange={(e) => setSalary_1(Number(e.target.value))} min="0"
                       className="worker-input__salary" type="number" name="salary" placeholder="Зарплата" id="salary"
                     />
                   </div>
-                ))}
               </div>
-              <div className="calculator__worker-btns">
-                <button onClick={handleRemoveWorkerButtonClick} className="calculator__worker-remove-btn btn-reset" type="button">Удалить</button>
-                <button onClick={handleAddWorkerButtonClick} className="calculator__worker-add-btn btn-reset" type="button">Добавить</button>
+              <div className="calculator__worker-inputs">
+                  <div className="calculator__worker-input">
+                    <input value={workers2_profession} onChange={(e) => setRole_2(String(e.target.value))}
+                      className="worker-input__role" type="text" name="role" placeholder="Должность" id="role"
+                    />
+                    <input value={workers2_amount} onChange={(e) => setCount_2(Number(e.target.value))} min="0"
+                      className="worker-input__count" type="number" name="count" placeholder="Количество" id="count"
+                    />
+                    <input value={min_workers2_amount} onChange={(e) => setMinCount_2(Number(e.target.value))} min="0"
+                      className="worker-input__min-count" type="number" name="minCount" placeholder="Минимальное количество" id="minCount"
+                    />
+                    <input value={workers2_pay} onChange={(e) => setSalary_2(Number(e.target.value))} min="0"
+                      className="worker-input__salary" type="number" name="salary" placeholder="Зарплата" id="salary"
+                    />
+                  </div>
               </div>
             </div>
           </form>
 
           <div className="calculator__middle">
             <ArrowSVG />
-            <button disabled={!workload || !workPeriod} className='calculator__submit-btn btn-reset' type="submit" form="calculator-form">Посчитать</button>
+            <button disabled={!work_volume|| !work_duration || !workers1_profession || !workers1_amount || !min_workers1_amount ||!workers1_pay ||
+      !workers2_profession || !workers2_amount || !min_workers2_amount ||!workers2_pay} className='calculator__submit-btn btn-reset' type="submit" 
+      form="calculator-form">Посчитать</button>
           </div>
 
           <div className="calculator__result-wrapper">
