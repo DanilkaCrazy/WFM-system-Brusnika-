@@ -16,6 +16,8 @@ import findStaffMemeberById from '../shared/find-staff-member-by-id';
 import { CalculatorResult } from '../types/calculator-result';
 import { CalculatorInputs } from '../types/calculator-inputs';
 
+
+let problemId = 0
 export const fetchStaffDataAction = createAsyncThunk<UserData[], undefined, {
   dispatch: AppDispatch;
   state: State;
@@ -72,14 +74,28 @@ export const postCalculatorInputsAction = createAsyncThunk<void, CalculatorInput
   state: State;
   extra: AxiosInstance;
 }>(
-  'calculator/deleteUser',
+  'calculator',
   async ({work_volume, work_duration, workers1_profession, workers1_amount, min_workers1_amount, 
     workers1_pay, workers2_profession, workers2_amount, min_workers2_amount, 
     workers2_pay}, { extra: api }) => {
-    await api.post<CalculatorInputs>(APIRoute.Calculator, {workers1_pay, workers2_pay, work_volume, work_duration, workers1_amount, workers2_amount, 
+    const data = await api.post<CalculatorInputs>(APIRoute.Calculator, {workers1_pay, workers2_pay, work_volume, work_duration, workers1_amount, workers2_amount, 
     min_workers1_amount, min_workers2_amount, workers1_profession, workers2_profession});
+    problemId = data.data.id
   },
 );
+
+export const getCalculatorResults = createAsyncThunk<void,  problemId , {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'staff/fetchStaffMemberData',
+  async ( problemId, {extra: api}) => {
+    const { data } = await api.get<UserData>(`${APIRoute.Solution}/${problemId}`);
+    //const data = findStaffMemeberById(staffMock, staffMemberId) as UserData; // мок на время тестирования
+    return data;
+  },
+)
 
 export const checkAuthAction = createAsyncThunk<ServerUserData, undefined, {
   dispatch: AppDispatch;

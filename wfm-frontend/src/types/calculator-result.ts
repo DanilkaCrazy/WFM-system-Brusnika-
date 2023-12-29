@@ -1,4 +1,5 @@
 export type CalculatorResult = {
-  workersCount: number;
-  expenses: number;
+  workers_pay: number;
+  workers1_final: number;
+  workers2_final: number;
 };

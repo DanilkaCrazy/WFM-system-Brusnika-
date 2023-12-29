@@ -37,9 +37,9 @@ def getLPProblem(request, pk):
         return getOneLPProblem(request, pk)
 
 @api_view(['GET'])
-def getLPProblemSolution(request,pk):
+def getLPProblemSolution(request,fk):
     if request.method=='GET':
-        return getOneLPProblemSolution(request, pk)
+        return getOneLPProblemSolution(request, fk)
 
 @api_view(['GET'])
 def getLPProblemSolutions(request):

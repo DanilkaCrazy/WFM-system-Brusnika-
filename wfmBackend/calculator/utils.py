@@ -23,8 +23,8 @@ def createProblem(request):
     serializer = LPProblemSerializer(lp_problem, many=False)
     return Response(serializer.data)
 
-def getOneLPProblemSolution(request, pk):
-    LPSol= LPProblemSolution.objects.get(id=pk)
+def getOneLPProblemSolution(request, fk):
+    LPSol= LPProblemSolution.objects.get(problem=fk)
     serializer = LPProblemSolutionSerializer(LPSol, many=False)
     return Response(serializer.data)
 

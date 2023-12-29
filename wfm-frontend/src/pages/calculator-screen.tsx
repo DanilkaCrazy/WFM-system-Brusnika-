@@ -28,27 +28,9 @@ export default function CalculatorScreen(): JSX.Element {
   const [workers2_amount, setCount_2] = useState<number>();
   const [min_workers2_amount, setMinCount_2] = useState<number>();
   const [workers2_pay, setSalary_2] = useState<number>();
-  const [workerInputs, setWorkerInputs] = useState<Partial<WorkerInput>[]>([{ ...workerInitialState }]);
 
   const calculating = useAppSelector(isCalculating);
   const result = useAppSelector(getCalculatorResult);
-
-  const handleAddWorkerButtonClick = () => {
-    const newWorkerInput = { ...workerInitialState };
-    setWorkerInputs([...workerInputs, newWorkerInput]);
-  };
-
-  const handleRemoveWorkerButtonClick = () => {
-    const data = [...workerInputs];
-    data.splice(workerInputs.length - 1, 1);
-    setWorkerInputs(data);
-  };
-
-  const handleWorkerInputChange = (e: FormEvent<HTMLInputElement>, index: number) => {
-    const data = [...workerInputs];
-    data[index][e.currentTarget.name] = e.currentTarget.value;
-    setWorkerInputs(data);
-  };
 
   const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();
@@ -134,7 +116,7 @@ export default function CalculatorScreen(): JSX.Element {
             <div className="calculator__result">
               <h3 className="calculator__result-title title-reset">Количество работников</h3>
               <div className="calculator__result-text">
-                {calculating ? 'Подсчёт...' : result.workersCount}
+                {calculating ? 'Подсчёт...' : result.workers1_final}
               </div>
             </div>
             <div className="calculator__result">

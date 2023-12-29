@@ -27,7 +27,7 @@ export const calculatorProcess = createSlice({
         state.calculating = true;
       })
       .addCase(postCalculatorInputsAction.fulfilled, (state, action: PayloadAction<CalculatorResult>) => {
-        state.workersCount = action.payload.workersCount;
+        state.workersCount = action.payload.workers1_final;
         state.expenses = action.payload.expenses;
         state.calculating = false;
       });
