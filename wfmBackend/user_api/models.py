@@ -25,9 +25,9 @@ class AppUserManager(BaseUserManager):
 
 
 class AppUser(AbstractBaseUser, PermissionsMixin):
-	manager = "МЕНЕДЖЕР"
-	worker = "СОТРУДНИК"
-	head = "РУКОВОДИТЕЛЬ"
+	manager = "Employee"
+	worker = "Manager"
+	head = "Leader"
 	ROLE_CHOICES = ((worker, "Сотрудник"),(manager,"Менеджер"),(head, "Руководитель"))
 	user_id = models.AutoField(primary_key=True)
 	username = models.CharField(max_length=50,unique=True)
