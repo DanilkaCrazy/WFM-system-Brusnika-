@@ -14,15 +14,21 @@
 
 ### ДЛЯ ЗАПУСКА 
 Открыть в консоли папку wfmBackend и выполнить следующие команды:
+
 1)pip install djangorestframework
+
 2)pip install django-cors-headers
-3)py manage.py runserver
+
+3)pip install pulp
+
+4)py manage.py runserver
 
 Открыть в консоли папку wfm-frontend и выполнить следующие команды:
-1)npm install axios
+1)npm install
+
 2)npm run start
 
-После выполнения команд перейти по адресу полученному при npm run start. В данный момент регистрация и вход находятся по адресу /userfull.
+После выполнения команд перейти по адресу полученному при npm run start. В данный момент страницы находятся по следующим адресам (писать после localhost:5173): регистрация - /register, вход - /login, пользователь - /user, калькулятор - /calculator.
 После первого запуска выполнять только команды 3 и 2 соответственно. 
 
 ### Критерии приемки результата / продукта:
